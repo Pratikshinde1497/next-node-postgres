@@ -1,0 +1,6 @@
+{
+  "services": {
+    "authentication": "localhost:4001",
+    "authorization": "localhost:4002"
+  }
+}
