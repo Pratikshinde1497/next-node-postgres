@@ -20,11 +20,27 @@ exports.protect = (req, res, next) => {
 }
 
 exports.authenticateGoogleUser = (newUser) => {
-  client.authenticateUserWithGoogle(newUser, (err, res) => {
-    if (!err) {
-      return {err: null, res};
-    }
-    else return {err, res: null}; 
-  })
+  // const response = await client.authenticateUserWithGoogle(newUser, (err, res) => {
+  //   if (!err) {
+  //     response.err = false;
+  //     response.res = res
+  //     return response
+  //   }
+  //   else {
+  //     response.err = err;
+  //     response.res = false
+  //     return response
+  //   }
+  // })
+
+
+  return new Promise((resolve, reject) => {
+    client.authenticateUserWithGoogle(newUser, (error, response) => {
+      if (error) {
+        reject(error);
+      }
+      resolve(response)
+    })
+  });
 }
 
