@@ -20,6 +20,10 @@ exports.guser = (Sequelize) => {
     image: {
       type: Sequelize.STRING
     },
+    role: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
     provider: {
       type: Sequelize.STRING,
       allowNull: false
