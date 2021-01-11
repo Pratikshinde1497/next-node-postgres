@@ -1,15 +1,7 @@
+const { tutorial } = require("./schemas");
+
 module.exports = (sequelize, Sequelize) => {
-    const Tutorial = sequelize.define("tutorial", {
-      title: {
-        type: Sequelize.STRING
-      },
-      description: {
-        type: Sequelize.STRING
-      },
-      published: {
-        type: Sequelize.BOOLEAN
-      }
-    });
+    const Tutorial = sequelize.define("tutorial", tutorial(Sequelize));
   
     return Tutorial;
   };

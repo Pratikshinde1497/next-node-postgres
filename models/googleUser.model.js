@@ -1,34 +1,7 @@
+const { guser } = require("./schemas");
+
 module.exports = (sequelize, Sequelize) => {
-  const User = sequelize.define("guser", {
-    googleId: {
-      type: Sequelize.STRING,
-      allowNull: false
-    },
-    displayName: {
-      type: Sequelize.STRING,
-      allowNull: false,
-      unique: true
-    },
-    firstName: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    lastName: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    image: {
-      type: Sequelize.STRING
-    },
-    provider: {
-      type: Sequelize.STRING,
-      allowNull: false
-    },
-    createdAt: {
-      type: Sequelize.DATE,
-      default: Date.now()
-    } 
-  });
+  const User = sequelize.define("guser", guser(Sequelize));
 
   return User;
 };
