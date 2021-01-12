@@ -19,15 +19,15 @@
 
  ## ***APIs***
 
- > _LOGIN OR REGISTER THROUGH GOOGLE OAUTH_ :  **GET**        {{url}}/api/v1/auth/google
+ > - _LOGIN OR REGISTER THROUGH GOOGLE OAUTH_ :  **GET**        {{url}}/api/v1/auth/google
   
   #### WITH ABOVE API WE CAN GET A JWT TOKEN, WITH THAT WE CAN ACCESS PROTECTED ROUTES MENTIONED BELOW.
   ##### TOKEN HAS TO BE PASSED THROUGH THE AUTHORIZATION HEADER.
 
- > _GET ALL TUTORIALS_                      :  **GET**        {{url}}/api/v1/tutorials
- > _GET TUTORIAL BY ID_                     :  **GET**        {{url}}/api/v1/tutorials/:id
- > _ADD TUTORIAL_                           :  **POST**       {{url}}/api/v1/tutorials
- > _UPDATE TUTORIAL BY ID_                  :  **PUT**        {{url}}/api/v1/tutorials/:id
- > _DELETE TUTORIAL BY ID_                  :  **DELETE**     {{url}}/api/v1/tutorials/:id
+ > - _GET ALL TUTORIALS_                      :  **GET**        {{url}}/api/v1/tutorials
+ > - _GET TUTORIAL BY ID_                     :  **GET**        {{url}}/api/v1/tutorials/:id
+ > - _ADD TUTORIAL_                           :  **POST**       {{url}}/api/v1/tutorials
+ > - _UPDATE TUTORIAL BY ID_                  :  **PUT**        {{url}}/api/v1/tutorials/:id
+ > - _DELETE TUTORIAL BY ID_                  :  **DELETE**     {{url}}/api/v1/tutorials/:id
 
 
