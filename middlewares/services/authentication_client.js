@@ -1,12 +1,12 @@
 const { response } = require('express');
 const  {grpc, protoLoader } = require('.');
 
-const packageDef = protoLoader.loadSync("authentication.proto", {});
+const packageDef = protoLoader.loadSync("proto-services/services/authenticate/service.proto", {});
 const grpcObject = grpc.loadPackageDefinition(packageDef);
 const authenticationPackage = grpcObject.authenticationPackage;
 const urls = require("../../config/hosts.json");
 
-const client = new authenticationPackage.Authenticate(urls.services.authentication, grpc.credentials.createInsecure());
+const client = new authenticationPackage.AuthenticateAPI(urls.services.authentication, grpc.credentials.createInsecure());
 
 exports.protect = async(req, res, next) => {
 

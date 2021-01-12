@@ -1,6 +1,6 @@
 const { grpc, protoLoader } = require(".");
 
-const packageDef = protoLoader.loadSync("authorize.proto", {});
+const packageDef = protoLoader.loadSync("proto-services/services/authorize/service.proto", {});
 const grpcObject = grpc.loadPackageDefinition(packageDef);
 const authorizePackage = grpcObject.authorizePackage;
 const urls = require("../../config/hosts.json");
