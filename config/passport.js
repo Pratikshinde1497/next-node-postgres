@@ -8,11 +8,8 @@ module.exports = function(passport) {
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: '/api/v1/auth/google/callback'
   }, async (accessToken, refreshToken, profile, done)=> {
-      console.log(`
-      accessToken:  ${accessToken},
-      refreshToken: ${refreshToken}
-      `);
-      const newUser = {
+
+    const newUser = {
         googleId: profile.id,
         displayName: profile.displayName,
         firstName: profile.name.givenName,
@@ -25,7 +22,12 @@ module.exports = function(passport) {
 
       await authenticateGoogleUser(newUser)
           .then(res => done(null, res))
-          .catch(err => console.log(err))
+          .catch(err => {
+            if (err.code === 14) {
+              console.log("Authentication Server not running: 500");
+              done("Authentication Server not running: 500", null)
+            }
+          })
     })
   )
 

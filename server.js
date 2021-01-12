@@ -3,6 +3,7 @@ const cors = require("cors");
 require("dotenv").config({path: "./config/config.env"});
 const passport = require("passport");
 const expressSession = require('express-session')
+const models = require("./models");
 
 const authRoute = require("./routes/auth.routes");
 const tutorialsRoute = require("./routes/tutorial.routes");
@@ -12,6 +13,9 @@ const { authorize } = require("./middlewares/services/authorization_client");
 
 //  initailize application
 const app = express();
+
+//  sync data with sequelize
+// models.sequelize.sync({ force: true});
 
 //  cross origin resource sharing 
 app.use(cors());
@@ -48,7 +52,7 @@ app.use("/api/v1/auth", authRoute);
 
 // tutorial routes
 // app.use("/api/v1/tutorials", protect, authorize('user', 'publisher', 'admin'), tutorialsRoute)
-app.use("/api/v1/tutorials", tutorialsRoute)
+app.use("/api/v1/tutorials", protect, authorize('user','publisher', 'admin'), tutorialsRoute)
 
 
 app.use((err, req, res, next)=>{
